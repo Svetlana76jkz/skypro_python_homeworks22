@@ -4,13 +4,9 @@ def is_year_leap(year):
     else:
         return False
     
-
-result_2024 = is_year_leap(2024)
-print("год 2024: True")
-
-result_2023 = is_year_leap(2023)
-print("год 2023: False")
-    
+year = int(input("Год:"))
+result = is_year_leap(year)
+print(result)   
 
    
 
