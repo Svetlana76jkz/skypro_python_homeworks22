@@ -1,0 +1,7 @@
+Локатор логотипа (html-елемент, содержащий в себе значок и слово "авиасейлс") - $$('a[href="/"]')
+Локатор поля Откуда - $('div.s__IOXL63_lRjMSpiaV15gA')
+Локатор поля Куда - $('div.s__IOXL63_lRjMSpiaV15gA')
+Локатор поля Когда -$('div.s__ta_SSbfNo_PsQ7Rdf70_')
+Локатор поля Обратно - $('div.s__ta_SSbfNo_PsQ7Rdf70_')
+Локатор чек-бокса "Открыть Ostrovok.ru в новой вкладке" -$('span.s__BGUqp9s2kxbNEnDjdIYc')
+Локатор кнопки Найти билеты - $('div.s__wr9OcknDPAtMpjta7a24') 
