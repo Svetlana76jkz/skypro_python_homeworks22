@@ -1,38 +1,34 @@
 from time import sleep
 from selenium import webdriver
+
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.firefox import GeckoDriverManager
+
 from selenium.webdriver.common.by import By
 
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
-
 
 # Запустить сайт
 driver.get("http://uitestingplayground.com/classattr/")
-
-# найти синюю кнопку по CSS-классу и кликнем на нее
-blue_button = driver.find_element(By.CSS_SELECTOR, "button[class='btn class1 btn-primary btn-test']").click()
 sleep(5)
 
-# Обработать оповещение
+# Нахождение и нажатие на кнопку с классом "btn-primary"
+button = driver.find_element(By.XPATH, "//button[contains(concat(' ', normalize-space(@class), ' '), ' btn-primary ')]")
+button.click()
+
+# Обработка всплывающего окна с предупреждением
 alert = driver.switch_to.alert
 alert.accept()
 
-
-#Кликнем на зеленую (отжать)
-green_button = driver.find_element(By.CSS_SELECTOR, "button[class='btn class2 btn-success btn-test']").click()
-sleep(5)
-
 # Повторить действия три раза
 for _ in range(3):
-    blue_button.click()
+    button.click()
     alert = driver.switch_to.alert
     alert.accept()
-    green_button.click()
-
-sleep(10)
-
-driver.quit()
+    
 
 sleep(10)
 
