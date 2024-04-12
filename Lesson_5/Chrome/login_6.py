@@ -3,13 +3,10 @@ from selenium import webdriver
 
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.firefox.service import Service as FirefoxService
-from webdriver_manager.firefox import GeckoDriverManager
 
 from selenium.webdriver.common.by import By
 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
 
 # Запустить сайт
 driver.get(" http://the-internet.herokuapp.com/login")
@@ -23,7 +20,7 @@ sleep(2)
 
 # В поле password введите значение SuperSecretPassword
 password = "#password"
-password_input = driver.find_element(By.CSS_SELECTOR, password).click()
+password_input = driver.find_element(By.CSS_SELECTOR, password)
 sleep(2)
 password_input.send_keys("SuperSecretPassword")
 sleep(2)
