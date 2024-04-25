@@ -22,7 +22,7 @@ def test_form_elements():
     driver.find_element(By.CSS_SELECTOR, 'input[name = "country"]').send_keys("Россия")
     driver.find_element(By.CSS_SELECTOR, 'input[name = "job-position"]').send_keys("QA")
     driver.find_element(By.CSS_SELECTOR, 'input[name = "company"]').send_keys("SkyPro")
-    driver.find_element(By.CSS_SELECTOR, 'button[type="submit"]').click()
+    driver.find_element(By.CSS_SELECTOR, 'button.btn').click()
 
     zip_code_color = driver.find_element(By.CSS_SELECTOR, "#zip-code").value_of_css_property("background-color")
     assert zip_code_color == 'rgba(248, 215, 218, 1)'
