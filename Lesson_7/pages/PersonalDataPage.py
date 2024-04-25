@@ -13,14 +13,14 @@ class PersonalDataPage:
         self.driver.find_element(By.CSS_SELECTOR, 'input[name = "first-name"]').send_keys(name)
         self.driver.find_element(By.CSS_SELECTOR, 'input[name = "last-name"]').send_keys(last)
         self.driver.find_element(By.CSS_SELECTOR, 'input[name = "address"]').send_keys(address)
-        self.driver.find_element(By.CSS_SELECTOR,'input[name = "e-mail"]').send_keys(email)
+        self.driver.find_element(By.CSS_SELECTOR, 'input[name = "e-mail"]').send_keys(email)
         self.driver.find_element(By.CSS_SELECTOR, 'input[name = "phone"]').send_keys(phone)
         self.driver.find_element(By.CSS_SELECTOR, 'input[name = "zip-code"]').clear()
         self.driver.find_element(By.CSS_SELECTOR, 'input[name = "city"]').send_keys(city)
         self.driver.find_element(By.CSS_SELECTOR, 'input[name = "country"]').send_keys(country)
         self.driver.find_element(By.CSS_SELECTOR, 'input[name = "job-position"]').send_keys(job)
         self.driver.find_element(By.CSS_SELECTOR, 'input[name = "company"]').send_keys(company)
-        self.driver.find_element(By.CSS_SELECTOR, 'button').click()
+        self.driver.find_element(By.CSS_SELECTOR, 'button.btn').click()
 
     def zip_code_red(self):
         zip_code_color = self.driver.find_element(By.CSS_SELECTOR, "#zip-code").value_of_css_property("background-color")
