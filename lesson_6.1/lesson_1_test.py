@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
+
 
 from webdriver_manager.chrome import ChromeDriverManager
 driver = webdriver.Chrome(service=ChromeService
@@ -22,7 +24,10 @@ def test_form_elements():
     driver.find_element(By.CSS_SELECTOR, 'input[name = "country"]').send_keys("Россия")
     driver.find_element(By.CSS_SELECTOR, 'input[name = "job-position"]').send_keys("QA")
     driver.find_element(By.CSS_SELECTOR, 'input[name = "company"]').send_keys("SkyPro")
-    driver.find_element(By.CSS_SELECTOR, 'button.btn').click()
+
+    button = driver.find_element(By.CSS_SELECTOR, 'button.btn')
+    ActionChains(driver).move_to_element(button).perform()
+    button.click()
 
     zip_code_color = driver.find_element(By.CSS_SELECTOR, "#zip-code").value_of_css_property("background-color")
     assert zip_code_color == 'rgba(248, 215, 218, 1)'

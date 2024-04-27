@@ -1,3 +1,4 @@
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 
 
@@ -20,7 +21,10 @@ class PersonalDataPage:
         self.driver.find_element(By.CSS_SELECTOR, 'input[name = "country"]').send_keys(country)
         self.driver.find_element(By.CSS_SELECTOR, 'input[name = "job-position"]').send_keys(job)
         self.driver.find_element(By.CSS_SELECTOR, 'input[name = "company"]').send_keys(company)
-        self.driver.find_element(By.CSS_SELECTOR, 'button.btn').click()
+        
+        button = self.driver.find_element(By.CSS_SELECTOR, 'button.btn')
+        ActionChains(self.driver).move_to_element(button).perform()
+        button.click()
 
     def zip_code_red(self):
         zip_code_color = self.driver.find_element(By.CSS_SELECTOR, "#zip-code").value_of_css_property("background-color")
