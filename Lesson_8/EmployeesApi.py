@@ -52,7 +52,7 @@ class EmployeesApi:
         resp = requests.post(self.url + '/employee', json=employee, headers=my_headers)
         return resp.json()
 
-    def edit_employee(self, new_lastName, new_email, new_url, new_phone, new_isActive):
+    def edit_employee(self, id, new_lastName, new_email, new_url, new_phone, new_isActive):
         employee = {
            "lastName": new_lastName,
            "email": new_email,
