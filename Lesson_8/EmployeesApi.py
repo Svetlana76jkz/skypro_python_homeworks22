@@ -12,25 +12,19 @@ class EmployeesApi:
         my_headers = {}
         my_headers["x-client-token"] = self.get_token()
         resp = requests.post(self.url + '/company', json=company, headers=my_headers)
-        print(resp)
         return resp.json()
 
     def get_company(self, id):
         resp = requests.get(self.url + '/company/' + str(id))
-        print(resp)
         return resp.json()
 
     def get_employee(self,id):
         resp = requests.get(self.url + '/employee/' + str(id))
-        print(resp)
         return resp.json() 
 
-    def get_employees_list(self,companyId, params_to_add=None):
-        params = {'companyId': companyId}
-        if params_to_add:
-           params.update(params_to_add)
+    def get_employees_list(self,companyId):
+        params = {'company': companyId}
         resp = requests.get(self.url + '/employee', params=params)
-        print(resp)
         return resp.json()
 
     def get_token(self, user = 'bloom', password = 'fire-fairy'):
@@ -39,7 +33,6 @@ class EmployeesApi:
            'password': password
            }
         resp = requests.post(self.url+'/auth/login', json=creds)
-        print(resp)
         return resp.json()['userToken'] 
 
     def create_employee(self, firstName, lastName, middleName, companyId, email, url, phone, birthdate, isActive):
@@ -57,7 +50,6 @@ class EmployeesApi:
         my_headers = {}
         my_headers["x-client-token"] = self.get_token()
         resp = requests.post(self.url + '/employee', json=employee, headers=my_headers)
-        print(resp)
         return resp.json()
 
     def edit_employee(self, new_lastName, new_email, new_phone, new_url, new_isActive):
@@ -71,5 +63,4 @@ class EmployeesApi:
         my_headers = {}
         my_headers["x-client-token"] = self.get_token()   
         resp = requests.patch(self.url + '/employee/' + str(id), headers=my_headers, json=employee)
-        print(resp)
-        return resp.json()      
+        return resp.json()     
