@@ -52,7 +52,7 @@ class EmployeesApi:
         resp = requests.post(self.url + '/employee', json=employee, headers=my_headers)
         return resp.json()
 
-    def edit_employee(self, new_lastName, new_email, new_phone, new_url, new_isActive):
+    def edit_employee(self, new_lastName, new_email, new_url, new_phone, new_isActive):
         employee = {
            "lastName": new_lastName,
            "email": new_email,
@@ -63,4 +63,5 @@ class EmployeesApi:
         my_headers = {}
         my_headers["x-client-token"] = self.get_token()   
         resp = requests.patch(self.url + '/employee/' + str(id), headers=my_headers, json=employee)
-        return resp.json()     
+        print(resp)
+        return resp.json()      

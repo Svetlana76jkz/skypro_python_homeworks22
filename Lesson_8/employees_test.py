@@ -100,26 +100,24 @@ def test_patch_employee():
     birthdate = "2001-05-06"
     isActive = True
     new_employee = api.create_employee(firstName, lastName, middleName, companyId, email, url, phone, birthdate, isActive)
-    id = new_employee["id"]
+    emp_id = new_employee["id"]
     # получить список сотрудников новой компании после....
     body = api.get_employees_list(companyId) 
     #Обращаемся к сотруднику по ID
-    new_employee = api.get_employee(id)
+    new_employee = api.get_employee(emp_id)
     employee_id = new_employee["id"]
     # Изменить информацию по сотруднику
-    new_lastName = "Updated"
-    new_email = "Updated"
-    new_url = "Updated"
+    new_lastName = "Козин"
+    new_email = "bzreva123@mail.ru"
+    new_url = "_Updated_"
     new_phone = "Updated"
     new_isActive = False
     edited = api.edit_employee(new_lastName, new_email, new_url, new_phone, new_isActive)
-    assert new_employee["lastName"] == "Updated"
-    assert new_employee["email"] == "Updated"
-    assert new_employee["url"] == "new_url"
-    assert new_employee["phone"] == "new_phone"
-    assert new_employee["isActive"] == False
-    
-
+    assert edited["lastName"] == "Козин"
+    assert edited["email"] == "bzreva123@mail.ru"
+    assert edited["url"] == "_Updated_"
+    assert edited["phone"] == "Updated"
+    assert edited["isActive"] == False
 
     
     
