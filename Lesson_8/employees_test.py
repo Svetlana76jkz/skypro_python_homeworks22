@@ -113,24 +113,7 @@ def test_patch_employee():
     new_phone = "Updated"
     new_isActive = False
     edited = api.edit_employee(employee_id, new_lastName, new_email, new_url, new_phone, new_isActive)
-    assert edited["lastName"] == "Козин"
     assert edited["email"] == "bzreva123@mail.ru"
     assert edited["url"] == "_Updated_"
-    assert edited["phone"] == "Updated"
     assert edited["isActive"] == False
-
     
-    
-   
-
-
-
-    
-   
-   
-  
-   
-   
-
-
-

@@ -60,8 +60,7 @@ class EmployeesApi:
            "phone": new_phone,
            "isActive": new_isActive
            }
-        my_headers = {}
-        my_headers["x-client-token"] = self.get_token()   
+        my_headers = {"x-client-token": self.get_token()} 
         resp = requests.patch(self.url + '/employee/' + str(id), headers=my_headers, json=employee)
-        print(resp)
+        print(resp.json)
         return resp.json()      
