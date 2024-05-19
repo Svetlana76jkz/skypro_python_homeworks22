@@ -117,5 +117,31 @@ def test_patch_employee():
     assert edited["url"] == "_Updated_"
     assert edited["isActive"] == False
 
+def test_delete_employee():
+    #Создать новую компанию
+    name = "ООО Стекло"
+    descr = "промышленность"
+    new_company = api.create_company(name, descr)
+    new_id = new_company["id"]
+    #Обращаемся к компании
+    new_company = api.get_company(new_id)
+    companyId = new_company["id"]
+    # добавить нового сотрудника
+    firstName = "Наталья"
+    lastName = "Воронина"
+    middleName = "Николаевна"
+    company = companyId
+    email = "voronina123@mail.ru"
+    url = "string"
+    phone = "865423175789"
+    birthdate = "1980-05-06"
+    isActive = True
+    new_employee = api.create_employee(firstName, lastName, middleName, companyId, email, url, phone, birthdate, isActive)
+    emp_id = new_employee["id"]
+    # удалить сотрудника
+    del_emp = api.delete_employee(emp_id)
 
+    # Проверить, что сотрудник был удален
+    assert del_emp is not None, "Сотрудник не был удален"
+    
     
