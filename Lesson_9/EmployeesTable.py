@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.sql import text
 
 class EmployeesTable:
-    self.__scripts = {
+    scripts = {
        "insert new company": text("insert into company (name, description) values (:new_name, :new_description)"),
         "get max id company": text("select MAX(id) AS max_id from company"),
         "select": text("select * from employee where id = : companyId"),
