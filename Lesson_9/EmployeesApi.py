@@ -1,16 +1,16 @@
 import requests
 
-class EmployeesApi: 
+class EmployeesApi:
     def __init__(self, url):
         self.url = url
-        
+
     def create_company(self, name, description=""):
         company = {
-            "name": name,
-            "description": description
+            'name': name,
+            'description': description
             }
         my_headers = {}
-        my_headers["x-client-token"] = self.get_token()
+        my_headers['x-client-token'] = self.get_token()
         resp = requests.post(self.url + '/company', json=company, headers=my_headers)
         return resp.json()
 
@@ -20,7 +20,7 @@ class EmployeesApi:
 
     def get_employee(self,id):
         resp = requests.get(self.url + '/employee/' + str(id))
-        return resp.json() 
+        return resp.json()
 
     def get_employees_list(self,companyId):
         params = {'company': companyId}
@@ -33,44 +33,42 @@ class EmployeesApi:
            'password': password
            }
         resp = requests.post(self.url+'/auth/login', json=creds)
-        return resp.json()['userToken'] 
+        return resp.json()['userToken']
 
     def create_employee(self, firstName, lastName, middleName, companyId, email, url, phone, birthdate, isActive):
         employee = {
-            "firstName": firstName,
-            "lastName": lastName,
-            "middleName": middleName,
-            "companyId": companyId,
-            "email": email,
-            "url": url,
-            "phone": phone,
-            "birthdate": birthdate,
-            "isActive": isActive
+            'firstName': firstName,
+            'lastName': lastName,
+            'middleName': middleName,
+            'companyId': companyId,
+            'email': email,
+            'url': url,
+            'phone': phone,
+            'birthdate': birthdate,
+            'isActive': isActive
             }
         my_headers = {}
-        my_headers["x-client-token"] = self.get_token()
+        my_headers['x-client-token'] = self.get_token()
         resp = requests.post(self.url + '/employee', json=employee, headers=my_headers)
         return resp.json()
 
-    def edit_employee(self, id, new_lastName, new_email, new_url, new_phone, new_isActive):
+    def edit_employee(self, new_lastName, new_email, new_url, new_phone, new_isActive, id):
         employee = {
-           "lastName": new_lastName,
-           "email": new_email,
-           "url":  new_url,
-           "phone": new_phone,
-           "isActive": new_isActive
+           'lastName': new_lastName,
+           'email': new_email,
+           'url':  new_url,
+           'phone': new_phone,
+           'isActive': new_isActive
            }
-        my_headers = {"x-client-token": self.get_token()} 
+        my_headers = {'x-client-token': self.get_token()}
         resp = requests.patch(self.url + '/employee/' + str(id), headers=my_headers, json=employee)
         return resp.json()
 
+
     def delete_employee(self, id):
         employee = {
-           "id": id
+           'id': id
            }
-        my_headers = {"x-client-token": self.get_token()} 
+        my_headers = {'x-client-token': self.get_token()}
         resp = requests.delete(self.url + f'/employee/{id}', headers=my_headers)
         return resp.json()
-
-
-        
