@@ -71,6 +71,3 @@ class EmployeesApi:
         my_headers = {"x-client-token": self.get_token()} 
         resp = requests.delete(self.url + f'/employee/{id}', headers=my_headers)
         return resp.json()
-
-
-        
