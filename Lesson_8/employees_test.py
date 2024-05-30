@@ -28,7 +28,7 @@ def test_add_new_employee():
     new_employee = api.create_employee(firstName, lastName, middleName, companyId, email, url, phone, birthdate, isActive)
     emp_id = new_employee["id"]
     # получить список сотрудников новой компании после....
-    body = api.get_employees_list(companyId) 
+    body = api.get_employees_list(companyId)
     len_after = len(body)
     assert len_after - len_before == 1
     assert body[-1]["firstName"] == "svetlana"
@@ -51,7 +51,7 @@ def test_get_employees_id():
     companyId = new_company['id']
     # получить список сотрудников новой компании до....
     body = api.get_employees_list(companyId)
-    begin_list = len(body) 
+    begin_list = len(body)
     # добавить нового сотрудника
     firstName = "olga"
     lastName = "voronina"
@@ -102,7 +102,7 @@ def test_patch_employee():
     new_employee = api.create_employee(firstName, lastName, middleName, companyId, email, url, phone, birthdate, isActive)
     emp_id = new_employee["id"]
     # получить список сотрудников новой компании после....
-    body = api.get_employees_list(companyId) 
+    body = api.get_employees_list(companyId)
     #Обращаемся к сотруднику по ID
     new_employee = api.get_employee(emp_id)
     employee_id = new_employee["id"]
@@ -143,5 +143,3 @@ def test_delete_employee():
 
     # Проверить, что сотрудник был удален
     assert del_emp is not None, "Сотрудник не был удален"
-    
-    
